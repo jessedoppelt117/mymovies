@@ -7,15 +7,20 @@ const SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
 // time.
-const TOKEN_PATH = "token.json";
 
 function getRows(server) {
-  // Load client secrets from a local file.
-  fs.readFile("credentials.json", (err, content) => {
-    if (err) return console.log("Error loading client secret file:", err);
-    // Authorize a client with credentials, then call the Google Sheets API.
-    authorize(JSON.parse(content), callAPI, server);
-  });
+  let content = {
+    installed: {
+      client_id: process.env.GCLIENT_ID,
+      auth_uri: "https://accounts.google.com/o/oauth2/auth",
+      token_uri: "https://oauth2.googleapis.com/token",
+      auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
+      client_secret: process.env.GCLIENT_SECRET,
+      redirect_uris: ["urn:ietf:wg:oauth:2.0:oob", "http://localhost"]
+    }
+  };
+  console.log(process.env);
+  authorize(content, callAPI, server);
 }
 
 /**
@@ -32,12 +37,15 @@ function authorize(credentials, callback, server) {
     redirect_uris[0]
   );
 
-  // Check if we have previously stored a token.
-  fs.readFile(TOKEN_PATH, (err, token) => {
-    if (err) return getNewToken(oAuth2Client, callback);
-    oAuth2Client.setCredentials(JSON.parse(token));
-    callback(oAuth2Client, server);
-  });
+  token = {
+    access_token: process.env.GACCESS_TOKEN,
+    refresh_token: process.env.GREFRESH_TOKEN,
+    token_type: "Bearer",
+    expiry_date: 1587615020531
+  };
+
+  oAuth2Client.setCredentials(token);
+  callback(oAuth2Client, server);
 }
 
 /**
