@@ -1,36 +1,100 @@
-.main-table {
-  border: solid 1px #DDEEEE;
-  border-collapse: collapse;
-  border-spacing: 0;
-  font: normal 13px Arial, sans-serif;
-  margin: 0 auto;
+body {
   margin-top: 20px;
-  margin-bottom: 20px;
-}
-.main-table thead th {
-  background-color: #DDEFEF;
-  border: solid 1px #DDEEEE;
-  color: #336B6B;
-  padding: 10px;
-  text-align: left;
-  text-shadow: 1px 1px 1px #fff;
-}
-.main-table tbody td {
-  border: solid 1px #DDEEEE;
-  color: #333;
-  padding: 10px;
-  text-shadow: 1px 1px 1px #fff;
+  width: 100%;
 }
 
 .movies {
   margin: 0 auto;
-  text-align: center;
+  width: 85%;
+}
+
+table {
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  padding-left: 10px;
+  border: 1px solid #ddd;
+}
+
+th {
+  font-size: 1.3em;
+  background-color: #2e475f;
+  color: #f5f6f7;
+  text-align: left;
+  padding-left: 10px;
+  position: relative;
+}
+
+td {
+  height: 35px;
+}
+
+tr {
+  cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.uparrow,
+.downarrow {
+  float: right;
+  padding-right: 15px;
+  font-size: 0.9em;
+}
+
+.uparrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.downarrow {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .pagination {
+  margin-top: 15px;
   font-size: 0.8em;
 }
 
 .goto {
   width: 30px;
+}
+
+.search {
+  width: 99%;
+  margin-bottom: 20px;
+  height: 30px;
+  font-size: 1.2em;
+  padding-left: 10px;
+}
+
+.pagination {
+  text-align: right;
+  margin-right: 10px;
+}
+
+.close {
+  background-color: white;
+  border: none;
+  float: right;
+  font-size: 1.2em;
+  color: red;
+}
+
+.close:hover {
+  cursor: pointer;
+}
+
+img {
+  max-width: 200px;
 }

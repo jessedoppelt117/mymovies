@@ -11,16 +11,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, "build")));
-
 app.get("/getrows", (req, res) => {
   getRows(res);
 });
+
+app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-app.listen(8000, () => {
-  console.log("Listening on port 8000");
+var port = process.env.PORT || 8000;
+
+app.listen(port, () => {
+  console.log("Listening on port", port);
 });

@@ -19,7 +19,6 @@ function getRows(server) {
       redirect_uris: ["urn:ietf:wg:oauth:2.0:oob", "http://localhost"]
     }
   };
-  console.log(process.env);
   authorize(content, callAPI, server);
 }
 
