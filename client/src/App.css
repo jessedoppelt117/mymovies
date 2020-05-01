@@ -94,7 +94,3 @@ tr:nth-child(even) {
 .close:hover {
   cursor: pointer;
 }
-
-img {
-  max-width: 200px;
-}

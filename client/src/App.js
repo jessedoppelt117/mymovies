@@ -61,11 +61,11 @@ function App() {
       } else if (el.type === "h2") {
         elements.push(<h2 key={el.name}>{el.data}</h2>);
       } else if (el.type === "img") {
-        if (el.data.includes(",")) {
-          var arr = el.data.split(",");
-          elements.push(<img src={arr[0]} width={arr[1]} />);
+        if (el.data.includes("*")) {
+          var arr = el.data.split("*");
+          elements.push(<img key={el.name} src={arr[0]} width={arr[1]} />);
         } else {
-          elements.push(<img src={el.data} width="200" />);
+          elements.push(<img key={el.name} src={el.data} width="200" />);
         }
       }
     }
